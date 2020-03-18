@@ -15,12 +15,13 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   color: #2c3e50;
 }
 
 #nav {
-  padding: 30px;
+    padding: 10px;
+    padding-left: 0;
 
   a {
     font-weight: bold;
@@ -34,7 +35,7 @@
 
 /* vue-tabs-component */
 .tabs-component {
-  margin: 4em 0;
+  margin: 0em 0;
 }
 
 .tabs-component-tabs {
@@ -56,7 +57,7 @@
 .tabs-component-tab {
   color: #999;
   font-size: 14px;
-  font-weight: 600;
+  /* font-weight: 600; */
   margin-right: 0;
   list-style: none;
 }
@@ -104,7 +105,7 @@
 }
 
 .tabs-component-panels {
-  padding: 4em 0;
+  padding: 1em 0;
 }
 
 @media (min-width: 700px) {
@@ -114,7 +115,7 @@
     border: solid 1px #ddd;
     border-radius: 0 6px 6px 6px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .05);
-    padding: 4em 2em;
+    padding: 1em 2em;
   }
 }
 
