@@ -1,0 +1,21 @@
+
+** VSCode:
+C:\Users\XuSte\project\tuto\vue\vue-form
+
+** Simple form:
+doc/vue-form.html, script.js, style.css
+
+** Form wizard:
+https://github.com/BinarCode/vue-form-wizard
+
+** manul stepped form:
+https://medium.com/engineering-samlino/building-a-multi-step-form-with-vue-2bc861447c4a
+
+------------
+tabbed:
+
+** manual (no lib)
+https://blog.bitsrc.io/highly-customizable-tab-component-with-vue-js-slots-7e1cee400a7c
+
+
+
