@@ -10,10 +10,10 @@
           </div>
         </tab>
         <tab name="Second tab">
-            Second tab content
+            <first-step></first-step>
         </tab>
         <tab name="Third tab">
-            Third tab content
+            <second-step></second-step>
         </tab>
     </tabs>
     </div>
@@ -21,8 +21,13 @@
 
 <script>
 import Vue from 'vue'
+import FirstStep from './FirstStepNoNav.vue'
+import SecondStep from './SecondStepNoNav.vue'
 
 export default {
+  components: {
+    FirstStep, SecondStep
+  },
   data () {
     return {
       groceryList: [

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import store from '../store.js'
+import store from '../store'
 import router from '../router'
 
 export default {
