@@ -5,6 +5,9 @@
       <router-link to="/grocery">Grocery</router-link> |
       <router-link to="/grocerySimple">Tabs</router-link> |
       <router-link to="/firstStep">Steps</router-link> |
+      <router-link to="/bsForm">BSForm</router-link> |
+      <router-link to="/stepsForm">StepsForm</router-link> |
+      <router-link to="/formWiz">FormWiz</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
@@ -256,6 +259,11 @@
 <script>
 import Vue from 'vue'
 import { Tabs, Tab } from 'vue-tabs-component'
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+Vue.use(BootstrapVue)
 
 Vue.component('tabs', Tabs)
 Vue.component('tab', Tab)

@@ -39,6 +39,21 @@ const routes = [
     path: '/secondStep',
     name: 'SecondStep',
     component: () => import('../views/SecondStep.vue')
+  },
+  {
+    path: '/bsForm',
+    name: 'BSForm',
+    component: () => import('../views/BSForm.vue')
+  },
+  {
+    path: '/stepsForm',
+    name: 'StepsForm',
+    component: () => import('../views/StepsForm.vue')
+  },
+  {
+    path: '/formWiz',
+    name: 'FormWiz',
+    component: () => import('../views/FormWiz.vue')
   }
 ]
 
