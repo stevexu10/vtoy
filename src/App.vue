@@ -8,6 +8,7 @@
       <router-link to="/bsForm">BSForm</router-link> |
       <router-link to="/stepsForm">StepsForm</router-link> |
       <router-link to="/formWiz">FormWiz</router-link> |
+      <router-link to="/vuetifyMenu">VuetifyMenu</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>

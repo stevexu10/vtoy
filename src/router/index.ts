@@ -54,6 +54,11 @@ const routes = [
     path: '/formWiz',
     name: 'FormWiz',
     component: () => import('../views/FormWiz.vue')
+  },
+  {
+    path: '/vuetifyMenu',
+    name: 'VuetifyMenu',
+    component: () => import('../views/VuetifyMenu.vue')
   }
 ]
 
