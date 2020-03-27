@@ -5,16 +5,58 @@
         activatable
         :open-on-click=true
         :dense=true
-        :selectable=true
+        :selectable=false
         :hoverable=true
-        :color='primary'
-        :shaped=true
-        :rounded=true
+        :shaped=false
+        :rounded=false
         >
-        <template v-slot:prepend="{ item, open }">
-          <i v-if="item.children" aria-hidden="true" :class="['v-icon v-treeview-node__toggle v-treeview-node__toggle-mine v-icon--link material-icons theme--light', {'v-treeview-node__toggle--open': open}]" :style="{color: item.color}">arrow_drop_down</i>
+        <!--template>
+          <span slot="label" slot-scope="item" :class="['myclaz']">
+            {{ item }}
+          </span>
+        </template-->
+        <!--template slot="label" slot-scope="{ item }">
+          <router-link :to="{ path: '/vuetifyMenu/about' }">{{ item.name }}</router-link>
+        </template-->
+        <template v-slot:scope="{ item }">
+          <i v-if="item.name" :class="[ myclaz ]" :style="{  }">arrow_drop_down</i>
         </template>
+        <!--template v-slot:prepend="{ item, open }">
+          <i v-if="item.children" aria-hidden="true" :class="['v-icon v-treeview-node__toggle v-treeview-node__toggle-mine v-icon--link material-icons theme--light', {'v-treeview-node__toggle--open': open}]" :style="{color: item.color}">arrow_drop_down</i>
+        </template-->
+        <!--template slot="prepend">
+          <v-list-tile-avatar
+            size="30"
+            style="min-width: 40px;"
+            tile>
+          </v-list-tile-avatar>
+        </template-->
+        <!--v-treeview :items="items">
+            <template slot="label" slot-scope="props">
+                <router-link :to="props.item.to" v-if="props.item.to">{{ props.item.name }}</router-link>
+                <span v-else>{{ props.item.name }}</span>
+            </template>
+        </v-treeview-->
+        <!--v-treeview
+          v-model="tree"
+          :items="items"
+          activatable
+          item-key="name">
+          <template slot="label" slot-scope="{ item }">
+            <a @click="openDialog(item)">{{ item.name }}</a>
+          </template>
+        </v-treeview-->
+        <!--v-treeview
+          v-model="tree"
+          :items="items"
+          :active="active"
+          activatable
+          open-on-click
+          @update:active="test"
+          >
+        </v-treeview-->
       </v-treeview>
+      <router-view></router-view>
     </v-app>
   </div>
 </template>
@@ -25,16 +67,49 @@
 }
 .v-treeview-node__toggle-mine {
   opacity: 1;
-  margin-left: -24px;
+  margin-left: 0px;
   /* let the click events go through to the actual toggle underneath */
   pointer-events: none;
+}
+.myclaz {
+  color: bisque;
+}
+
+.v-treeview--dense .v-treeview-node__root {
+    min-height: fit-content;
+    height: fit-content;
+    border: 1px;
+}
+
+.v-treeview-node.v-treeview-node--shaped .v-treeview-node__root {
+    margin-top: 0px;
+    padding-bottom: inherit;
+    width: fit-content;
+ }
+
+ .v-treeview-node--click>.v-treeview-node__root, .v-treeview-node--click>.v-treeview-node__root>.v-treeview-node__content>* {
+    border-spacing: initial;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: fit-content;
+    border: 1px solid green;
+    padding: 0px;
+    margin: 0px;
+    border-collapse: collapse;
 }
 
 </style>
 
 <script>
 export default {
+  methods: {
+    test () { console.log('TEST', this.active) }
+  },
   data: () => ({
+    myclass: '.v-treeview-node__toggle',
     items: [
       {
         id: 1,

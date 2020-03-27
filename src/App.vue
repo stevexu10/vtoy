@@ -2,20 +2,60 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
+      <router-link to="/claims">Claims</router-link> |
+      <router-link to="/grocerySimple">Search Claim</router-link> |
       <router-link to="/grocery">Grocery</router-link> |
-      <router-link to="/grocerySimple">Tabs</router-link> |
       <router-link to="/firstStep">Steps</router-link> |
       <router-link to="/bsForm">BSForm</router-link> |
       <router-link to="/stepsForm">StepsForm</router-link> |
       <router-link to="/formWiz">FormWiz</router-link> |
-      <router-link to="/vuetifyMenu">VuetifyMenu</router-link> |
+      <router-link to="/vuetifyMenu">VuetifyTreeview</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
   </div>
 </template>
 
+<script>
+import Vue from 'vue'
+import { Tabs, Tab } from 'vue-tabs-component'
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+import BootstrapNav from './views/BootstrapNav'
+
+Vue.use(BootstrapVue)
+
+Vue.component('tabs', Tabs)
+Vue.component('tab', Tab)
+
+export default {
+  // components: { BootstrapNav }
+}
+
+</script>
+
 <style lang="scss">
+/* Bootrtrap Nav
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    padding-top: 0.25rem;
+    padding-right: 1.5rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+*/
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -256,21 +296,3 @@
       }
   }
 </style>
-
-<script>
-import Vue from 'vue'
-import { Tabs, Tab } from 'vue-tabs-component'
-import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-
-Vue.use(BootstrapVue)
-
-Vue.component('tabs', Tabs)
-Vue.component('tab', Tab)
-
-export default {
-
-}
-
-</script>

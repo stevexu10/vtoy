@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld v-bind:msg="msg"/>
   </div>
 </template>
@@ -15,7 +14,7 @@ export default {
     HelloWorld
   },
   data () {
-    return { msg: 'Wuuuu' }
+    return { msg: 'Welcome to' }
   }
 }
 </script>

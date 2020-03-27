@@ -58,7 +58,19 @@ const routes = [
   {
     path: '/vuetifyMenu',
     name: 'VuetifyMenu',
-    component: () => import('../views/VuetifyMenu.vue')
+    component: () => import('../views/VuetifyMenu.vue'),
+    children: [
+      {
+        name: 'About',
+        path: 'about',
+        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+      }
+    ]
+  },
+  {
+    path: '/claims',
+    name: 'Claims',
+    component: () => import('../views/BootstrapNav.vue')
   }
 ]
 
