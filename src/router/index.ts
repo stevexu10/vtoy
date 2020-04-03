@@ -76,6 +76,11 @@ const routes = [
     path: '/vuetifyData',
     name: 'VuetifyData',
     component: () => import('../views/VFDatatable.vue')
+  },
+  {
+    path: '/vuetifyDataClaimInsulinS',
+    name: 'VuetifyDataClaimInsulinS',
+    component: () => import('../views/VFDatatableClaimInsulinS.vue')
   }
 ]
 

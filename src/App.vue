@@ -11,6 +11,7 @@
       <router-link to="/formWiz">FormWiz</router-link> |
       <router-link to="/vuetifyMenu">VuetifyTreeview</router-link> |
       <router-link to="/vuetifyData">VuetifyData</router-link> |
+      <router-link to="/vuetifyDataClaimInsulinS">VuetifyDataClaimInsulinS</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
