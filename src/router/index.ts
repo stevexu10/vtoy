@@ -71,6 +71,11 @@ const routes = [
     path: '/claims',
     name: 'Claims',
     component: () => import('../views/BootstrapNav.vue')
+  },
+  {
+    path: '/vuetifyData',
+    name: 'VuetifyData',
+    component: () => import('../views/VFDatatable.vue')
   }
 ]
 
