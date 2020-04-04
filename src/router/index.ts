@@ -81,6 +81,26 @@ const routes = [
     path: '/vuetifyDataClaimInsulinS',
     name: 'VuetifyDataClaimInsulinS',
     component: () => import('../views/VFDatatableClaimInsulinS.vue')
+  },
+  {
+    path: '/claimView',
+    name: 'ClaimView',
+    component: () => import('../views/ClaimView.vue')
+  },
+  {
+    path: '/claimInsulinSyringe',
+    name: 'ClaimInsulinSyringe',
+    component: () => import('../views/ClaimInsulinSyringe.vue')
+  },
+  {
+    path: '/claimSearch',
+    name: 'ClaimSearch',
+    component: () => import('../components/SearchClaim.vue')
+  },
+  {
+    path: '/claimDisplay',
+    name: 'ClaimDisplay',
+    component: () => import('../components/DisplayClaim.vue')
   }
 ]
 

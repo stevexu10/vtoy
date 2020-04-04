@@ -1,19 +1,52 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/claims">Claims</router-link> |
-      <router-link to="/grocerySimple">Search Claim</router-link> |
-      <router-link to="/grocery">Grocery</router-link> |
-      <router-link to="/firstStep">Steps</router-link> |
-      <router-link to="/bsForm">BSForm</router-link> |
-      <router-link to="/stepsForm">StepsForm</router-link> |
-      <router-link to="/formWiz">FormWiz</router-link> |
-      <router-link to="/vuetifyMenu">VuetifyTreeview</router-link> |
-      <router-link to="/vuetifyData">VuetifyData</router-link> |
-      <router-link to="/vuetifyDataClaimInsulinS">VuetifyDataClaimInsulinS</router-link> |
-      <router-link to="/about">About</router-link>
+    <div>
+      <table class="table table-dark adam-banner">
+        <tbody>
+          <tr style="background-color: #596B81">
+            <td align="left"><img src="./banner_back.jpg" class=""/></td>
+            <td align="right" width="100%" height="33" valign="bottom">
+              <h5>Ministry of Health</h5>
+              <h4 style="color: gold">
+                Assistive Devices Application Management (ADAM) System
+              </h4>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
+    <Menu mode="horizontal" :theme="theme1" active-name="1"  @on-select="selected">
+        <Submenu name="claim">
+            <template slot="title">
+                <Icon type="stats-bars"></Icon>
+                Claim
+            </template>
+            <MenuGroup title="Record Claim">
+                <MenuItem v-bind:name="menuData.menuGroups[0].menuItems[0].name">Breast Prostheses</MenuItem>
+                <MenuItem v-bind:name="menuData.menuGroups[0].menuItems[1].name">Communication Aids</MenuItem>
+                <MenuItem v-bind:name="menuData.menuGroups[0].menuItems[2].name">Insulin Syringe</MenuItem>
+            </MenuGroup>
+            <MenuGroup title="Assess Claim">
+                <MenuItem v-bind:name="menuData.menuGroups[1].menuItems[0].name">Assess</MenuItem>
+            </MenuGroup>
+            <MenuGroup title="View Claim">
+                <MenuItem v-bind:name="menuData.menuGroups[2].menuItems[0].name">View</MenuItem>
+            </MenuGroup>
+        </submenu>
+        <Submenu name="claimBatch">
+            <template slot="title">
+                <Icon type="stats-bars"></Icon>
+                Claim Batch
+            </template>
+        </Submenu>
+        <Submenu name="client">
+            <template slot="title">
+                <Icon type="stats-bars"></Icon>
+                Client
+            </template>
+        </Submenu>
+    </Menu>
     <router-view/>
   </div>
 </template>
@@ -21,42 +54,64 @@
 <script>
 import Vue from 'vue'
 import { Tabs, Tab } from 'vue-tabs-component'
-import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-
-import BootstrapNav from './views/BootstrapNav'
-
-Vue.use(BootstrapVue)
+import { adamMenu } from './menu-data.js'
 
 Vue.component('tabs', Tabs)
 Vue.component('tab', Tab)
 
 export default {
-  // components: { BootstrapNav }
+  components: {
+  },
+
+  data () {
+    return {
+      // light, dark, primary
+      theme1: 'light',
+      menuData: adamMenu
+    }
+  },
+  methods: {
+    home () {
+      this.$router.push({ name: 'Home', params: { display: true } }).catch(error => {
+        console.log(error)
+      })
+    },
+    insulineSyringe () {
+      this.$router.push({ name: 'ClaimInsulinSyringe', params: { display: true } }).catch(error => {
+        console.log(error)
+      })
+    },
+    claimView () {
+      this.$router.push({ name: 'ClaimView', params: { display: true } }).catch(error => {
+        console.log(error)
+      })
+    },
+    selected (name) {
+      console.log(name)
+      switch (name) {
+        case this.menuData.menuGroups[1].menuItems[0].name:
+          this.$router.push({ name: 'ClaimView', params: { display: true } }).catch(error => {
+            console.log(error)
+          })
+          break
+        case this.menuData.menuGroups[2].menuItems[0].name:
+          this.claimView()
+          break
+        default:
+          this.home()
+      }
+    }
+  }
 }
 
 </script>
 
 <style lang="scss">
-/* Bootrtrap Nav
-.dropdown-item {
-    display: block;
-    width: 100%;
-    padding: .25rem 1.5rem;
-    padding-top: 0.25rem;
-    padding-right: 1.5rem;
-    padding-bottom: 0.25rem;
-    padding-left: 0.5rem;
-    clear: both;
-    font-weight: 400;
-    color: #212529;
-    text-align: inherit;
-    white-space: nowrap;
-    background-color: transparent;
-    border: 0;
+/**** ADAM Banner  ****/
+.adam-banner {
+  background-color: #596B81;
+  margin: 0px;
 }
-*/
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -74,13 +129,83 @@ export default {
     font-weight: bold;
     color: #2c3e50;
 
-    &.router-link-exact-active {
+    &.router-link-exact-active, .submenu {
       color: #42b983;
     }
   }
 }
 
-/* vue-tabs-component */
+body {
+      background-color: #efefef;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+      font-size: 16px;
+      padding: 0.01em;
+  }
+
+img {
+    vertical-align: top;
+    border-style: none;
+}
+
+/*** Multi-level menu ****/
+.Menu__header {
+  display: flex;
+  align-items: center;
+  padding-left: 35px;
+  height: 50px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #232f3e;
+  cursor: pointer;
+
+  .arrow {
+    padding-top: 2px;
+    fill: #fff;
+    margin-right: 10px;
+    width: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.Menu__list {
+  list-style: none;
+  padding-bottom: 2px;
+
+  .separator {
+      border-bottom: 1px solid #d5dbdb;
+      padding: 2px 0 0 0;
+      margin: 0;
+  }
+}
+
+.Menu__item {
+  color: #4a4a4a;
+  padding-left: 35px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  a {
+    color: #4a4a4a;
+    text-decoration: none;
+  }
+
+  .arrow[data-v-2a060565] {
+    padding-top: 2px;
+    fill: black;
+    padding-left: 15px;
+    display: flex;
+    align-items: left;
+    width: 25px;
+    height: 100%;
+  }
+
+}
+
+/****  vue-tabs-component ****/
 .tabs-component {
   margin: 0em 0;
 }
@@ -174,13 +299,6 @@ export default {
       margin: 0;
       padding: 0;
       position: relative;
-  }
-
-  body {
-      background-color: #efefef;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-      font-size: 16px;
-      padding: 1em;
   }
 
   .page {
