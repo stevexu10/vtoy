@@ -5,8 +5,10 @@
 </template>
 
 <script>
-// @ is an alias to /src
+// @ is an alias to  /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import { appMenu } from '../appcnf/menu.js'
+import { adamMenu } from '../menu-data.js'
 
 export default {
   name: 'Home',
@@ -14,7 +16,7 @@ export default {
     HelloWorld
   },
   data () {
-    return { msg: 'Welcome to' }
+    return { msg: appMenu.appMenu }
   }
 }
 </script>

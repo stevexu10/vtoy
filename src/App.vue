@@ -47,6 +47,118 @@
             </template>
         </Submenu>
     </Menu>
+
+    <!--div v-for="(i, key, index) in nowData" v-if="(key !== 'children')">
+        {{ i }} - {{ key }} - {{ index }}
+    </div>
+    <div v-else>
+      {{ i }}
+    </div-->
+    
+    <div class="">
+
+    <!--Menu
+        :active-name="4"
+        v-show="true"
+        theme="dark"
+        width="300px"
+        @on-select="selected"
+        >
+      <template v-for="(item, key, index) in nowData">
+        <template v-if="key === 'children'">
+          <template v-for="it in item">
+            <Submenu :name="it.name">
+              <template slot="title">
+                <span> {{ it.title }} </span>
+              </template>
+              <template slot="title">
+                <MenuItem :name="it.name" :key="it.name">
+                  <span> {{ it.title }}</span>
+                </MenuItem>
+              </template>
+            </Submenu>
+          </template>
+        </template>
+        <template v-else>
+          <MenuItem :name="key" :key="key">
+            <span> {{ item }} </span>
+          </MenuItem>
+        </template>
+      </template>
+    </Menu-->
+
+      <!--Submenu v-for="item in nowData" :name="item.name" v-bind:key="item.name" ref="child">
+        <template slot="title">
+          <span :key="item">{{item}}</span>
+        </template>
+        <template v-for="item1 in item.children">
+          <Submenu v-if="item1.children&&item1.children.length!==0" :name="item1.name" :key="item1.name">
+            <template v-for="item1 in item1" slot="title">
+              <span :key="item1.name">{{item1.title}}xx</span>
+            </template>
+            <MenuItem 
+                :name="item2.name" 
+                v-for="item2 in item1.children"									            
+                to = "Jump routing"
+                :key="item2.name">
+                {{item2.title}}xx
+            </MenuItem>
+          </Submenu>
+          <MenuItem
+            class="noChildmenuitem"
+            v-else
+            :name="item1.name"
+            :key="item1.name"
+            to = "Jump routing2">
+            <i :class="'iconfont '+'11'"></i>
+            &nbsp;&nbsp;&nbsp;
+            {{ item1.title }}
+          </MenuItem>
+        </template>
+      </Submenu>
+    </Menu-->
+
+    <!--Menu
+        ref="side_menu"
+        :active-name="activeName"
+        theme="light"
+        width="300px"
+        :class="menuitemClasses"
+        accordion
+        :open-names="openNames"
+        @on-select="checkList"
+        @on-open-change="openList"
+        >
+      <Submenu v-for="(item, key, index) in nowData" :name="key" :key="key" ref="child">
+        <template slot="title" v-if="key !== 'children'">
+          <span>{{item}}xxx</span>
+        </template>
+        <template v-else v-for="(list1, key, index) in item" >
+          <Submenu v-if="list1.children&&list1.children.length!==0" :name="list1.name">
+            <template v-for="(item1, key, index) in list1" slot="title">
+              <span>{{ item1.name }}yyy</span>
+            </template>
+            <MenuItem   
+                :name="list2.name" 
+                v-for="list2 in list1"									            
+                to = "Jump routing1"
+                :key="list2.name">
+                {{list2.title}}wwwww
+            </MenuItem>
+          </Submenu>
+          <MenuItem
+            class="noChildmenuitem"
+            v-else
+            :name="list1.name"
+              to = "Jump routing2"
+            >
+            {{ list1.title }}zzz
+          </MenuItem>
+        </template>
+      </Submenu>
+    </Menu-->
+
+    </div>
     <router-view/>
   </div>
 </template>
@@ -55,6 +167,7 @@
 import Vue from 'vue'
 import { Tabs, Tab } from 'vue-tabs-component'
 import { adamMenu } from './menu-data.js'
+import { appMenu } from './appcnf/menu.js'
 
 Vue.component('tabs', Tabs)
 Vue.component('tab', Tab)
@@ -67,7 +180,206 @@ export default {
     return {
       // light, dark, primary
       theme1: 'light',
-      menuData: adamMenu
+      menuData: adamMenu,
+      nowData: {
+        title: ' 4',
+        name: '4',
+        icon: 'iconxiangmugaikuo1',
+        closable: false,
+        showInTags: true,
+        showInMenus: true,
+        choosed: true,
+        opened: false,
+        children: [
+          {
+            title: '4-1',
+            name: '4-1',
+            closable: true,
+            showInTags: false,
+            showInMenus: true,
+            choosed: false,
+            opened: false,
+            children: [
+              {
+                title: '4-1-1',
+                name: '4-1-1',
+                closable: true,
+                showInTags: false,
+                showInMenus: true,
+                opened: false
+              },
+              {
+                title: '4-1-2',
+                name: '4-1-2',
+                closable: true,
+                showInTags: false,
+                showInMenus: true,
+                choosed: false
+              },
+              {
+                title: '4-1-3',
+                name: '4-1-3',
+                closable: true,
+                showInTags: false,
+                showInMenus: true,
+                choosed: false
+              },
+              {
+                title: '4-1-4',
+                name: '4-1-4',
+                closable: true,
+                showInTags: false,
+                showInMenus: true,
+                choosed: false
+              }
+            ]
+          },
+          {
+            title: '4-2',
+            name: '4-2',
+            closable: true,
+            showInTags: false,
+            showInMenus: true,
+            choosed: false,
+            children: [
+              {
+                title: '4-2-1',
+                name: '4-2-1',
+                closable: true,
+                showInTags: false,
+                showInMenus: true,
+                choosed: false
+              },
+              {
+                title: '4-2-2',
+                name: '4-2-2',
+                closable: true,
+                showInTags: false,
+                showInMenus: true,
+                choosed: false
+              },
+              {
+                title: '4-2-3',
+                name: '4-2-3',
+                closable: true,
+                showInTags: false,
+                showInMenus: true,
+                choosed: false
+              },
+              {
+                title: '4-2-4',
+                name: '4-2-4',
+                closable: true,
+                showInTags: false,
+                showInMenus: true,
+                choosed: false
+              },
+              {
+                title: '4-2-5',
+                name: '4-2-5',
+                closable: true,
+                showInTags: false,
+                showInMenus: true,
+                choosed: false
+              }
+            ]
+          },
+          {
+            title: '4-3',
+            name: '4-3',
+            closable: true,
+            showInTags: false,
+            showInMenus: true,
+            choosed: false,
+            children: [
+              {
+                title: '4-3-1',
+                name: '4-3-1',
+                closable: true,
+                showInTags: false,
+                showInMenus: true,
+                choosed: false
+              },
+              {
+                title: '4-3-2',
+                name: '4-3-2',
+                closable: true,
+                showInTags: false,
+                showInMenus: true,
+                choosed: false
+              },
+              {
+                title: '4-3-3',
+                name: '4-3-3',
+                closable: true,
+                showInTags: false,
+                showInMenus: true,
+                choosed: false
+              }
+            ]
+          },
+          {
+            title: '4-4',
+            name: '4-4',
+            closable: true,
+            showInTags: false,
+            showInMenus: true,
+            choosed: false,
+            children: [
+              {
+                title: '4-4-1',
+                name: '4-4-1',
+                closable: true,
+                showInTags: false,
+                showInMenus: true,
+                choosed: false
+              }
+            ]
+          },
+          {
+            title: '4-5',
+            name: '4-5',
+            closable: true,
+            showInTags: false,
+            showInMenus: true,
+            choosed: false
+          },
+          {
+            title: '4-6',
+            name: '4-6',
+            closable: true,
+            showInTags: false,
+            showInMenus: true,
+            choosed: false
+          },
+          {
+            title: '4-7',
+            name: '4-7',
+            closable: true,
+            showInTags: false,
+            showInMenus: true,
+            choosed: false,
+            children: [
+              {
+                title: '4-7-1',
+                name: '4-7-1',
+                closable: true,
+                showInTags: false,
+                showInMenus: true,
+                choosed: false
+              },
+              {
+                title: '4-7-2',
+                name: '4-7-2',
+                closable: true,
+                showInTags: false,
+                showInMenus: true,
+                choosed: false
+              }
+            ]
+          }
+        ]
+        }
     }
   },
   methods: {

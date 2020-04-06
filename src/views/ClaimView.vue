@@ -1,5 +1,6 @@
 <template>
   <div>
+    <v-app>
     <b-container class="" fluid="true">
       <b-row align-h="start" class="text-center">
         <b-col cols="3" class="adam-fully-occupied">
@@ -30,6 +31,7 @@
       </b-row>
     </b-container>
     <router-view></router-view>
+    </v-app>
   </div>
 </template>
 
