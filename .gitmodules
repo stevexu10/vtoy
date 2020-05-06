@@ -1,0 +1,4 @@
+[submodule "vtoy"]
+	path = vtoy
+	url = https://github.com/stevexu01/vtoy.git
+	branch = master
