@@ -32,3 +32,13 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### for pull request
+add new feature
+Features for phase1:
+1. New login
+2. Smart search
+
+Features for phase2:
+1. Microservice desgin requred.
+
