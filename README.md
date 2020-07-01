@@ -42,3 +42,9 @@ Features for phase1:
 Features for phase2:
 1. Microservice desgin requred.
 
+### By Stevexu10
+Phase1:
+1. New login:
+  make sure handle login failure.
+  
+
