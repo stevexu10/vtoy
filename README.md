@@ -39,4 +39,6 @@ Features for phase1:
 1. New login
 2. Smart search
 
+Features for phase2:
+1. Microservice desgin requred.
 
